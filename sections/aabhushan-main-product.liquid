@@ -1,0 +1,54 @@
+{%- liquid
+  assign selected_variant = product.selected_or_first_available_variant
+  assign business_name = settings.aabhushan_store_name | default: 'Aabhushan Sales'
+  assign whatsapp_number = settings.aabhushan_whatsapp
+-%}
+
+<section class="as-product">
+  <div class="as-product-media">
+    <div class="as-product-image">
+      {%- if product.featured_media != blank -%}
+        {{ product.featured_media.preview_image | image_url: width: 1200 | image_tag: loading: 'eager', alt: product.title }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'as-placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="as-product-panel">
+    <p class="as-eyebrow">{{ product.vendor | default: section.settings.eyebrow }}</p>
+    <h1>{{ product.title }}</h1>
+    <div class="as-product-price">{{ selected_variant.price | money }}</div>
+    {%- if product.description != blank -%}<div class="as-product-description">{{ product.description }}</div>{%- endif -%}
+
+    {% form 'product', product, class: 'as-product-form' %}
+      {%- if product.has_only_default_variant -%}
+        <input type="hidden" name="id" value="{{ selected_variant.id }}">
+      {%- else -%}
+        <label for="ProductSelect-{{ section.id }}">Select option<select id="ProductSelect-{{ section.id }}" name="id">{%- for variant in product.variants -%}<option value="{{ variant.id }}" {% if variant == selected_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title }} - {{ variant.price | money }}</option>{%- endfor -%}</select></label>
+      {%- endif -%}
+      <button class="as-button as-button-primary" type="submit" {% unless selected_variant.available %}disabled{% endunless %}>{%- if selected_variant.available -%}{{ section.settings.add_to_cart_label }}{%- else -%}Sold out{%- endif -%}</button>
+    {% endform %}
+
+    <form class="as-panel" data-aabhushan-enquiry data-business-name="{{ business_name | escape }}" data-whatsapp-number="{{ whatsapp_number | escape }}">
+      <input type="hidden" name="product" value="{{ product.title | escape }}">
+      <label>Occasion<input name="occasion" type="text" placeholder="Wedding, daily use, gift, festival"></label>
+      <button class="as-button as-button-outline" type="submit">{{ section.settings.enquiry_label }}</button>
+      <output class="as-output" data-aabhushan-output>Prepare an enquiry for this product.</output>
+      <a class="as-button as-button-primary" data-aabhushan-whatsapp-action href="#" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+    </form>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aabhushan product",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Fallback eyebrow", "default": "Aabhushan Sales" },
+    { "type": "text", "id": "add_to_cart_label", "label": "Add to cart label", "default": "Add to cart" },
+    { "type": "text", "id": "enquiry_label", "label": "Enquiry button label", "default": "Create product enquiry" }
+  ],
+  "presets": [ { "name": "Aabhushan product" } ]
+}
+{% endschema %}

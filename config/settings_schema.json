@@ -1,0 +1,34 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Aabhushan Sales Renovation",
+    "theme_version": "1.0.0",
+    "theme_author": "OpenAI Codex",
+    "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes",
+    "theme_support_url": "https://help.shopify.com/"
+  },
+  {
+    "name": "Aabhushan business details",
+    "settings": [
+      { "type": "image_picker", "id": "aabhushan_logo", "label": "Logo" },
+      { "type": "text", "id": "aabhushan_store_name", "label": "Store name", "default": "Aabhushan Sales" },
+      { "type": "textarea", "id": "aabhushan_store_address", "label": "Store address", "default": "Shop No. 3, Sant Kabir Rd, Beside Kuber Hotel, Ranchod Nagar Society, Randhir Nagar, Arya Nagar, Rajkot" },
+      { "type": "text", "id": "aabhushan_city", "label": "City", "default": "Rajkot" },
+      { "type": "text", "id": "aabhushan_region", "label": "Region", "default": "Gujarat" },
+      { "type": "text", "id": "aabhushan_country", "label": "Country code", "default": "IN" },
+      { "type": "text", "id": "aabhushan_phone", "label": "Phone number" },
+      { "type": "text", "id": "aabhushan_whatsapp", "label": "WhatsApp number" },
+      { "type": "text", "id": "aabhushan_store_hours", "label": "Store hours" },
+      { "type": "url", "id": "aabhushan_instagram", "label": "Instagram URL" },
+      { "type": "url", "id": "aabhushan_maps_url", "label": "Google Maps URL" }
+    ]
+  },
+  {
+    "name": "Aabhushan SEO",
+    "settings": [
+      { "type": "checkbox", "id": "aabhushan_enable_local_seo", "label": "Enable LocalBusiness JSON-LD on homepage", "default": true },
+      { "type": "text", "id": "aabhushan_homepage_title", "label": "Homepage SEO title", "default": "Aabhushan Sales Rajkot | Jewellery, Fashion Accessories & Gifts" },
+      { "type": "textarea", "id": "aabhushan_homepage_description", "label": "Homepage SEO description", "default": "Visit Aabhushan Sales in Arya Nagar, Rajkot for micro imitation jewellery, fashion accessories, gifting options, bangles, festive pieces, and occasion-ready styles." }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{%- liquid
+  assign business_name = settings.aabhushan_store_name | default: 'Aabhushan Sales'
+  assign business_address = settings.aabhushan_store_address | default: 'Shop No. 3, Sant Kabir Rd, Beside Kuber Hotel, Ranchod Nagar Society, Randhir Nagar, Arya Nagar, Rajkot'
+  assign business_city = settings.aabhushan_city | default: 'Rajkot'
+  assign business_region = settings.aabhushan_region | default: 'Gujarat'
+  assign business_country = settings.aabhushan_country | default: 'IN'
+-%}
+{%- if settings.aabhushan_enable_local_seo and template.name == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "JewelryStore",
+      "name": {{ business_name | json }},
+      "url": {{ canonical_url | json }},
+      "description": {{ settings.aabhushan_homepage_description | default: 'Micro imitation jewellery, fashion accessories, gifts, bangles, festive pieces, and occasion-ready styles in Arya Nagar, Rajkot.' | json }},
+      "telephone": {{ settings.aabhushan_phone | default: '' | json }},
+      "openingHours": {{ settings.aabhushan_store_hours | default: '' | json }},
+      "address": { "@type": "PostalAddress", "streetAddress": {{ business_address | json }}, "addressLocality": {{ business_city | json }}, "addressRegion": {{ business_region | json }}, "addressCountry": {{ business_country | json }} }
+      {%- if settings.aabhushan_instagram != blank -%}, "sameAs": [{{ settings.aabhushan_instagram | json }}]{%- endif -%}
+    }
+  </script>
+{%- endif -%}

@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "aabhushan-storefront",
+      "blocks": {
+        "festive": { "type": "collection_card", "settings": { "collection": "festive-jewellery", "kicker": "Festive Jewellery", "title": "Wedding and celebration sets", "link_label": "Shop festive" } },
+        "bangles": { "type": "collection_card", "settings": { "collection": "bangles", "kicker": "Bangles", "title": "Traditional and statement styles", "link_label": "Shop bangles" } },
+        "daily": { "type": "collection_card", "settings": { "collection": "daily-wear", "kicker": "Daily Wear", "title": "Lightweight pieces for every day", "link_label": "Shop daily wear" } },
+        "gifting": { "type": "collection_card", "settings": { "collection": "gifting", "kicker": "Gifting", "title": "Curated picks by budget and occasion", "link_label": "Shop gifts" } },
+        "bridal": { "type": "collection_card", "settings": { "collection": "bridal-wedding", "kicker": "Bridal/Wedding", "title": "Occasion-ready jewellery for milestones", "link_label": "Shop wedding" } }
+      },
+      "block_order": ["festive", "bangles", "daily", "gifting", "bridal"],
+      "settings": { "hero_heading": "Aabhushan Sales", "primary_cta_url": "/collections/all" }
+    }
+  },
+  "order": ["main"]
+}

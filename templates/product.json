@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "aabhushan-main-product", "settings": { "add_to_cart_label": "Add to cart", "enquiry_label": "Create product enquiry" } }
+  },
+  "order": ["main"]
+}

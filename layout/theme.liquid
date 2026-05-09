@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#1c1917">
+    <meta name="theme-color" content="#7f263d">
     {%- liquid
-      assign home_title = settings.aabhushan_homepage_title | default: 'Aabhushan Sales Rajkot | Jewellery, Fashion Accessories & Gifts'
-      assign home_description = settings.aabhushan_homepage_description | default: 'Visit Aabhushan Sales in Arya Nagar, Rajkot for micro imitation jewellery, fashion accessories, gifting options, bangles, festive pieces, and occasion-ready styles.'
+      assign home_title = settings.aabhushan_homepage_title | default: 'Aabhushan Sales Rajkot | Micro Imitation Jewellery & Accessories'
+      assign home_description = settings.aabhushan_homepage_description | default: 'Visit Aabhushan Sales in Arya Nagar, Rajkot for micro imitation jewellery, fashion accessories, bangles, earrings, gifting options, bridal styles, and occasion-ready pieces.'
       if template.name == 'index'
         assign seo_title = home_title
         assign seo_description = home_description
@@ -24,21 +24,26 @@
   </head>
   <body class="as-theme">
     <a class="as-skip-link" href="#MainContent">Skip to content</a>
+
     <header class="as-header">
       <a class="as-brand" href="{{ routes.root_url }}" aria-label="{{ settings.aabhushan_store_name | default: shop.name | escape }} home">
         {%- if settings.aabhushan_logo != blank -%}
-          {{ settings.aabhushan_logo | image_url: width: 220 | image_tag: class: 'as-brand-logo', loading: 'eager', alt: settings.aabhushan_store_name }}
+          {{ settings.aabhushan_logo | image_url: width: 260 | image_tag: class: 'as-brand-logo', loading: 'eager', alt: settings.aabhushan_store_name }}
         {%- else -%}
           <span class="as-brand-mark">AS</span>
         {%- endif -%}
         <span><strong>{{ settings.aabhushan_store_name | default: 'Aabhushan Sales' }}</strong><small>{{ settings.aabhushan_city | default: 'Rajkot' }}</small></span>
       </a>
+
       <nav class="as-nav" aria-label="Main navigation">
         <a href="{{ routes.root_url }}">Home</a>
-        <a href="{{ routes.all_products_collection_url }}">Shop</a>
+        <a href="/collections/earrings">Earrings</a>
         <a href="/collections/bangles">Bangles</a>
-        <a href="#aabhushan-visit">Visit</a>
+        <a href="/collections/necklace-sets">Necklace Sets</a>
+        <a href="/collections/bridal-wedding">Bridal</a>
+        <a href="{{ routes.all_products_collection_url }}">All Jewellery</a>
       </nav>
+
       <div class="as-header-actions">
         {%- if settings.aabhushan_whatsapp != blank -%}
           {%- assign whatsapp_clean = settings.aabhushan_whatsapp | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')' -%}
@@ -47,13 +52,20 @@
         <a class="as-cart-link" href="{{ routes.cart_url }}">Cart {{ cart.item_count }}</a>
       </div>
     </header>
+
     <main id="MainContent" tabindex="-1">{{ content_for_layout }}</main>
+
     <footer class="as-footer">
-      <div><strong>{{ settings.aabhushan_store_name | default: 'Aabhushan Sales' }}</strong>{%- if settings.aabhushan_store_address != blank -%}<span>{{ settings.aabhushan_store_address }}</span>{%- endif -%}</div>
-      <div class="as-footer-links">
-        {%- if settings.aabhushan_phone != blank -%}<a href="tel:{{ settings.aabhushan_phone | remove: ' ' }}">{{ settings.aabhushan_phone }}</a>{%- endif -%}
-        {%- if settings.aabhushan_maps_url != blank -%}<a href="{{ settings.aabhushan_maps_url }}" target="_blank" rel="noopener">Directions</a>{%- endif -%}
-        {%- if settings.aabhushan_instagram != blank -%}<a href="{{ settings.aabhushan_instagram }}" target="_blank" rel="noopener">Instagram</a>{%- endif -%}
+      <div class="as-footer-brand">
+        <strong>{{ settings.aabhushan_store_name | default: 'Aabhushan Sales' }}</strong>
+        {%- if settings.aabhushan_store_address != blank -%}<span>{{ settings.aabhushan_store_address }}</span>{%- endif -%}
+        {%- if settings.aabhushan_store_hours != blank -%}<span>{{ settings.aabhushan_store_hours }}</span>{%- endif -%}
+      </div>
+      <div class="as-footer-grid">
+        <div><h2>Shop</h2><a href="/collections/earrings">Earrings</a><a href="/collections/bangles">Bangles</a><a href="/collections/necklace-sets">Necklace Sets</a><a href="/collections/rings">Rings</a></div>
+        <div><h2>Occasions</h2><a href="/collections/bridal-wedding">Bridal/Wedding</a><a href="/collections/daily-wear">Daily Wear</a><a href="/collections/gifting">Gifting</a><a href="{{ routes.all_products_collection_url }}">Latest Arrivals</a></div>
+        <div><h2>Help</h2><a href="/pages/contact">Contact</a><a href="/pages/about-us">About Us</a><a href="/policies/shipping-policy">Shipping Policy</a><a href="/policies/refund-policy">Refund Policy</a></div>
+        <div><h2>Store</h2>{%- if settings.aabhushan_phone != blank -%}<a href="tel:{{ settings.aabhushan_phone | remove: ' ' }}">{{ settings.aabhushan_phone }}</a>{%- endif -%}{%- if settings.aabhushan_maps_url != blank -%}<a href="{{ settings.aabhushan_maps_url }}" target="_blank" rel="noopener">Directions</a>{%- endif -%}{%- if settings.aabhushan_instagram != blank -%}<a href="{{ settings.aabhushan_instagram }}" target="_blank" rel="noopener">Instagram</a>{%- endif -%}</div>
       </div>
     </footer>
   </body>

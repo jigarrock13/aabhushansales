@@ -2,6 +2,11 @@
   assign selected_variant = product.selected_or_first_available_variant
   assign business_name = settings.aabhushan_store_name | default: 'Aabhushan Sales'
   assign whatsapp_number = settings.aabhushan_whatsapp
+  assign material = product.metafields.custom.material.value
+  assign finish = product.metafields.custom.finish.value
+  assign occasion = product.metafields.custom.occasion.value
+  assign care = product.metafields.custom.care.value
+  assign availability_note = product.metafields.custom.availability_note.value
 -%}
 
 <section class="as-product">
@@ -13,13 +18,31 @@
         {{ 'product-1' | placeholder_svg_tag: 'as-placeholder-svg' }}
       {%- endif -%}
     </div>
+    {%- if product.media.size > 1 -%}
+      <div class="as-product-thumbs" aria-label="Product images">
+        {%- for media in product.media limit: 4 -%}
+          <div class="as-product-image">{{ media.preview_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product.title }}</div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
   </div>
 
   <div class="as-product-panel">
     <p class="as-eyebrow">{{ product.vendor | default: section.settings.eyebrow }}</p>
     <h1>{{ product.title }}</h1>
     <div class="as-product-price">{{ selected_variant.price | money }}</div>
+    {%- if selected_variant.sku != blank -%}<p><strong>SKU:</strong> {{ selected_variant.sku }}</p>{%- endif -%}
     {%- if product.description != blank -%}<div class="as-product-description">{{ product.description }}</div>{%- endif -%}
+
+    {%- if material != blank or finish != blank or occasion != blank or care != blank or availability_note != blank -%}
+      <ul class="as-product-meta">
+        {%- if material != blank -%}<li><span>Material</span><strong>{{ material }}</strong></li>{%- endif -%}
+        {%- if finish != blank -%}<li><span>Finish</span><strong>{{ finish }}</strong></li>{%- endif -%}
+        {%- if occasion != blank -%}<li><span>Occasion</span><strong>{{ occasion }}</strong></li>{%- endif -%}
+        {%- if care != blank -%}<li><span>Care</span><strong>{{ care }}</strong></li>{%- endif -%}
+        {%- if availability_note != blank -%}<li><span>Availability</span><strong>{{ availability_note }}</strong></li>{%- endif -%}
+      </ul>
+    {%- endif -%}
 
     {% form 'product', product, class: 'as-product-form' %}
       {%- if product.has_only_default_variant -%}

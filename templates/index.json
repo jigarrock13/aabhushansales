@@ -3,14 +3,26 @@
     "main": {
       "type": "aabhushan-storefront",
       "blocks": {
-        "festive": { "type": "collection_card", "settings": { "collection": "festive-jewellery", "kicker": "Festive Jewellery", "title": "Wedding and celebration sets", "link_label": "Shop festive" } },
-        "bangles": { "type": "collection_card", "settings": { "collection": "bangles", "kicker": "Bangles", "title": "Traditional and statement styles", "link_label": "Shop bangles" } },
-        "daily": { "type": "collection_card", "settings": { "collection": "daily-wear", "kicker": "Daily Wear", "title": "Lightweight pieces for every day", "link_label": "Shop daily wear" } },
-        "gifting": { "type": "collection_card", "settings": { "collection": "gifting", "kicker": "Gifting", "title": "Curated picks by budget and occasion", "link_label": "Shop gifts" } },
-        "bridal": { "type": "collection_card", "settings": { "collection": "bridal-wedding", "kicker": "Bridal/Wedding", "title": "Occasion-ready jewellery for milestones", "link_label": "Shop wedding" } }
+        "earrings": { "type": "category_tile", "settings": { "collection": "earrings", "title": "Earrings", "text": "Studs, hoops, drops, and daily wear favourites", "link_label": "Shop earrings" } },
+        "bangles": { "type": "category_tile", "settings": { "collection": "bangles", "title": "Bangles", "text": "Traditional, festive, and statement styles", "link_label": "Shop bangles" } },
+        "necklace_sets": { "type": "category_tile", "settings": { "collection": "necklace-sets", "title": "Necklace Sets", "text": "Complete sets for celebrations and gifting", "link_label": "Shop sets" } },
+        "rings": { "type": "category_tile", "settings": { "collection": "rings", "title": "Rings", "text": "Everyday sparkle and occasion-ready pieces", "link_label": "Shop rings" } },
+        "bridal": { "type": "category_tile", "settings": { "collection": "bridal-wedding", "title": "Bridal/Wedding", "text": "Curated styles for milestone days", "link_label": "Shop bridal" } },
+        "daily": { "type": "category_tile", "settings": { "collection": "daily-wear", "title": "Daily Wear", "text": "Lightweight pieces for routine styling", "link_label": "Shop daily" } },
+        "gifting": { "type": "category_tile", "settings": { "collection": "gifting", "title": "Gifting", "text": "Thoughtful jewellery picks by occasion", "link_label": "Shop gifts" } },
+        "quality": { "type": "promise", "settings": { "title": "Quality Checked", "text": "Pieces are checked before handover for finish and condition." } },
+        "pricing": { "type": "promise", "settings": { "title": "Transparent Pricing", "text": "Clear store assistance on product price and available options." } },
+        "exchange": { "type": "promise", "settings": { "title": "Easy Exchange Support", "text": "Store team can guide eligible exchange requests." } },
+        "repair": { "type": "promise", "settings": { "title": "Repair Assistance", "text": "Visit the store for repair guidance and service support." } },
+        "gift": { "type": "promise", "settings": { "title": "Gift Packing", "text": "Ask the team for gift-ready packing options." } },
+        "store": { "type": "promise", "settings": { "title": "Store Assistance", "text": "Get help choosing by budget, style, and occasion." } }
       },
-      "block_order": ["festive", "bangles", "daily", "gifting", "bridal"],
-      "settings": { "hero_heading": "Aabhushan Sales", "primary_cta_url": "/collections/all" }
+      "block_order": ["earrings", "bangles", "necklace_sets", "rings", "bridal", "daily", "gifting", "quality", "pricing", "exchange", "repair", "gift", "store"],
+      "settings": {
+        "hero_heading": "Aabhushan Sales",
+        "hero_text": "Explore micro imitation jewellery, fashion accessories, and occasion-ready styles through a catalogue made for faster browsing and easier store enquiries.",
+        "featured_collection": "earrings"
+      }
     }
   },
   "order": ["main"]

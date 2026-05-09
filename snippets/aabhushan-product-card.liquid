@@ -1,6 +1,32 @@
+{%- liquid
+  assign card_variant = product.selected_or_first_available_variant
+  assign has_offer = false
+  assign is_new = false
+  assign is_fast = false
+  assign is_bestseller = false
+  if product.tags contains 'offer'
+    assign has_offer = true
+  endif
+  if product.tags contains 'new-arrival'
+    assign is_new = true
+  endif
+  if product.tags contains 'fast-shipping'
+    assign is_fast = true
+  endif
+  if product.tags contains 'bestseller'
+    assign is_bestseller = true
+  endif
+-%}
+
 <article class="as-product-card">
   <a href="{{ product.url }}">
     <div class="as-product-card-image">
+      <div class="as-badge-row">
+        {%- if has_offer -%}<span class="as-badge as-badge-offer">Offer</span>{%- endif -%}
+        {%- if is_new -%}<span class="as-badge">New Arrival</span>{%- endif -%}
+        {%- if is_fast -%}<span class="as-badge">Fast Shipping</span>{%- endif -%}
+        {%- if is_bestseller -%}<span class="as-badge">Bestseller</span>{%- endif -%}
+      </div>
       {%- if product.featured_image != blank -%}
         {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title }}
       {%- else -%}
@@ -11,6 +37,7 @@
       {%- if product.vendor != blank -%}<p>{{ product.vendor }}</p>{%- endif -%}
       <h3>{{ product.title }}</h3>
       <span>{%- if product.price_varies -%}From {{ product.price_min | money }}{%- else -%}{{ product.price | money }}{%- endif -%}</span>
+      {%- if card_variant.sku != blank -%}<small>SKU: {{ card_variant.sku }}</small>{%- endif -%}
     </div>
   </a>
 </article>

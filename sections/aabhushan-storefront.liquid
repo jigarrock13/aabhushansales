@@ -5,6 +5,7 @@
   assign whatsapp_number = settings.aabhushan_whatsapp
   assign maps_url = settings.aabhushan_maps_url
   assign store_hours = settings.aabhushan_store_hours
+  assign featured_collection = section.settings.featured_collection
 -%}
 
 <section class="as-home" id="aabhushan-home-{{ section.id }}">
@@ -16,54 +17,51 @@
       <h1>{{ section.settings.hero_heading | default: business_name }}</h1>
       <p>{{ section.settings.hero_text }}</p>
       <div class="as-actions">
-        <a class="as-button as-button-primary" href="{{ section.settings.primary_cta_url | default: '#aabhushan-collections' }}">{{ section.settings.primary_cta_label }}</a>
-        {%- if maps_url != blank -%}<a class="as-button as-button-secondary" href="{{ maps_url }}" target="_blank" rel="noopener">{{ section.settings.visit_cta_label }}</a>{%- endif -%}
+        <a class="as-button as-button-primary" href="{{ section.settings.primary_cta_url | default: routes.all_products_collection_url }}">{{ section.settings.primary_cta_label }}</a>
+        <a class="as-button as-button-secondary" href="#aabhushan-categories">Browse categories</a>
       </div>
     </div>
   </div>
 
-  <div class="as-trust" aria-label="Store highlights">
-    <div><strong>{{ section.settings.trust_one_title }}</strong><span>{{ section.settings.trust_one_text }}</span></div>
-    <div><strong>{{ section.settings.trust_two_title }}</strong><span>{{ section.settings.trust_two_text }}</span></div>
-    <div><strong>{{ section.settings.trust_three_title }}</strong><span>{{ section.settings.trust_three_text }}</span></div>
+  <div class="as-trust-strip" aria-label="Store highlights">
+    <div><strong>Catalogue Shopping</strong><span>Browse by product type, occasion, and gifting need.</span></div>
+    <div><strong>Store Assistance</strong><span>Ask for help choosing by budget, finish, and style.</span></div>
+    <div><strong>Rajkot Store</strong><span>Directions and local enquiry options stay easy to find.</span></div>
+    <div><strong>Gift Ready</strong><span>Request gift packing and occasion-ready suggestions.</span></div>
   </div>
 
-  <div class="as-section as-light" id="aabhushan-collections">
+  <div class="as-section as-white" id="aabhushan-categories">
     <div class="as-heading">
-      <p class="as-eyebrow">{{ section.settings.collections_eyebrow }}</p>
-      <h2>{{ section.settings.collections_heading }}</h2>
-      <p>{{ section.settings.collections_text }}</p>
+      <p class="as-eyebrow">{{ section.settings.categories_eyebrow }}</p>
+      <h2>{{ section.settings.categories_heading }}</h2>
+      <p>{{ section.settings.categories_text }}</p>
     </div>
-    <div class="as-collection-grid">
+    <div class="as-category-grid">
       {%- for block in section.blocks -%}
-        {%- if block.type == 'collection_card' -%}
+        {%- if block.type == 'category_tile' -%}
           {%- liquid
             assign selected_collection = block.settings.collection
-            assign card_title = block.settings.title
             assign card_url = block.settings.fallback_url
             if selected_collection != blank
               assign card_url = selected_collection.url
-              if card_title == blank
-                assign card_title = selected_collection.title
-              endif
             endif
           -%}
-          <article class="as-collection-card" {{ block.shopify_attributes }}>
+          <article class="as-category-card" {{ block.shopify_attributes }}>
             <a href="{{ card_url | default: routes.all_products_collection_url }}">
-              <div class="as-card-image">
+              <div class="as-category-image">
                 {%- if block.settings.image != blank -%}
-                  {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: card_title }}
+                  {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', alt: block.settings.title }}
                 {%- elsif selected_collection.image != blank -%}
-                  {{ selected_collection.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: card_title }}
+                  {{ selected_collection.image | image_url: width: 700 | image_tag: loading: 'lazy', alt: block.settings.title }}
                 {%- elsif selected_collection.products.first.featured_image != blank -%}
-                  {{ selected_collection.products.first.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: card_title }}
+                  {{ selected_collection.products.first.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: block.settings.title }}
                 {%- else -%}
                   {{ 'collection-1' | placeholder_svg_tag: 'as-placeholder-svg' }}
                 {%- endif -%}
               </div>
-              <div class="as-card-body">
-                <p>{{ block.settings.kicker }}</p>
-                <h3>{{ card_title }}</h3>
+              <div class="as-category-body">
+                <p>{{ block.settings.title }}</p>
+                <h3>{{ block.settings.text }}</h3>
                 <span>{{ block.settings.link_label }}</span>
               </div>
             </a>
@@ -73,22 +71,49 @@
     </div>
   </div>
 
+  <div class="as-section as-light">
+    <div class="as-heading">
+      <p class="as-eyebrow">{{ section.settings.featured_eyebrow }}</p>
+      <h2>{{ section.settings.featured_heading }}</h2>
+      <p>{{ section.settings.featured_text }}</p>
+    </div>
+    {%- if featured_collection != blank and featured_collection.products.size > 0 -%}
+      <div class="as-product-grid">
+        {%- for product in featured_collection.products limit: section.settings.featured_limit -%}
+          {% render 'aabhushan-product-card', product: product %}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="as-heading"><p>Add products to the selected featured collection to show a Malabar-style product grid here.</p></div>
+    {%- endif -%}
+  </div>
+
+  <div class="as-section as-rose">
+    <div class="as-heading">
+      <p class="as-eyebrow">{{ section.settings.promises_eyebrow }}</p>
+      <h2>{{ section.settings.promises_heading }}</h2>
+      <p>{{ section.settings.promises_text }}</p>
+    </div>
+    <div class="as-promise-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'promise' -%}
+          <article class="as-promise-card" {{ block.shopify_attributes }}><strong>{{ block.settings.title }}</strong><p>{{ block.settings.text }}</p></article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
   <div class="as-section as-dark">
     <div class="as-split">
       <div>
-        <p class="as-eyebrow">{{ section.settings.experience_eyebrow }}</p>
-        <h2>{{ section.settings.experience_heading }}</h2>
-        <p>{{ section.settings.experience_text }}</p>
-        <div class="as-feature-list">
-          <div><span>01</span><strong>{{ section.settings.feature_one_title }}</strong><p>{{ section.settings.feature_one_text }}</p></div>
-          <div><span>02</span><strong>{{ section.settings.feature_two_title }}</strong><p>{{ section.settings.feature_two_text }}</p></div>
-          <div><span>03</span><strong>{{ section.settings.feature_three_title }}</strong><p>{{ section.settings.feature_three_text }}</p></div>
-        </div>
+        <p class="as-eyebrow">Store services</p>
+        <h2>Browse online. Finalize with store guidance.</h2>
+        <p>Aabhushan Sales can use the site like a digital catalogue: customers discover styles, prepare a useful enquiry, and visit or message the store with clearer intent.</p>
       </div>
-      <div class="as-panel">
-        <p class="as-eyebrow">Recommended flow</p>
-        <h2>Browse, enquire, visit</h2>
-        <p>Show clear product groups, keep contact actions close, and help customers prepare better enquiries before they call or message.</p>
+      <div class="as-quick-grid">
+        <div class="as-quick-card"><h3>Store Visit</h3><p>Use the map link to plan a visit to Arya Nagar.</p></div>
+        <div class="as-quick-card"><h3>Bulk & Gifting</h3><p>Ask for options for family functions, gifting, and occasions.</p></div>
+        <div class="as-quick-card"><h3>New Arrivals</h3><p>Tag products as new-arrival to highlight fresh pieces.</p></div>
       </div>
     </div>
   </div>
@@ -101,7 +126,7 @@
         <p>{{ section.settings.enquiry_text }}</p>
       </div>
       <form class="as-panel" data-aabhushan-enquiry data-business-name="{{ business_name | escape }}" data-whatsapp-number="{{ whatsapp_number | escape }}">
-        <label>I am looking for<select name="category"><option>Festive jewellery</option><option>Bangles</option><option>Daily wear accessories</option><option>Gift options</option><option>Bridal or wedding pieces</option></select></label>
+        <label>I am looking for<select name="category"><option>Earrings</option><option>Bangles</option><option>Necklace sets</option><option>Rings</option><option>Daily wear accessories</option><option>Gift options</option><option>Bridal or wedding pieces</option></select></label>
         <label>Budget range<select name="budget"><option>Under Rs. 2,000</option><option>Rs. 2,000 - Rs. 5,000</option><option>Rs. 5,000 - Rs. 10,000</option><option>Rs. 10,000+</option></select></label>
         <label>Occasion<input name="occasion" type="text" placeholder="Wedding, daily use, gift, festival"></label>
         <button class="as-button as-button-primary" type="submit">Create enquiry</button>
@@ -113,8 +138,8 @@
 
   <div class="as-section as-contact" id="aabhushan-visit">
     <div>
-      <p class="as-eyebrow">{{ section.settings.visit_eyebrow }}</p>
-      <h2>{{ section.settings.visit_heading | default: business_name }}</h2>
+      <p class="as-eyebrow">Visit the store</p>
+      <h2>{{ business_name }}, Arya Nagar</h2>
       <p>{{ business_address }}</p>
       {%- if store_hours != blank -%}<p>{{ store_hours }}</p>{%- endif -%}
     </div>
@@ -132,44 +157,38 @@
   "tag": "section",
   "settings": [
     { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
-    { "type": "text", "id": "hero_eyebrow", "label": "Hero eyebrow", "default": "Everyday fashion and occasion-ready pieces in Arya Nagar" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Hero eyebrow", "default": "Micro imitation jewellery catalogue" },
     { "type": "text", "id": "hero_heading", "label": "Hero heading", "default": "Aabhushan Sales" },
-    { "type": "textarea", "id": "hero_text", "label": "Hero text", "default": "A refined Rajkot storefront for micro imitation jewellery, fashion accessories, gifts, and occasion-ready styles." },
-    { "type": "text", "id": "primary_cta_label", "label": "Primary CTA label", "default": "Explore collections" },
+    { "type": "textarea", "id": "hero_text", "label": "Hero text", "default": "Explore micro imitation jewellery, fashion accessories, and occasion-ready styles through a catalogue made for faster browsing and easier store enquiries." },
+    { "type": "text", "id": "primary_cta_label", "label": "Primary CTA label", "default": "Shop latest jewellery" },
     { "type": "url", "id": "primary_cta_url", "label": "Primary CTA URL" },
-    { "type": "text", "id": "visit_cta_label", "label": "Visit CTA label", "default": "Plan store visit" },
-    { "type": "text", "id": "trust_one_title", "label": "Trust item 1 title", "default": "Local store focus" },
-    { "type": "text", "id": "trust_one_text", "label": "Trust item 1 text", "default": "Rajkot shoppers can quickly find address, directions, and enquiry options." },
-    { "type": "text", "id": "trust_two_title", "label": "Trust item 2 title", "default": "Catalogue-first layout" },
-    { "type": "text", "id": "trust_two_text", "label": "Trust item 2 text", "default": "Collections are grouped for faster browsing on mobile and desktop." },
-    { "type": "text", "id": "trust_three_title", "label": "Trust item 3 title", "default": "Better enquiry flow" },
-    { "type": "text", "id": "trust_three_text", "label": "Trust item 3 text", "default": "Visitors can prepare a useful enquiry before contacting the store." },
-    { "type": "text", "id": "collections_eyebrow", "label": "Collections eyebrow", "default": "Shop by intent" },
-    { "type": "text", "id": "collections_heading", "label": "Collections heading", "default": "Find the right piece faster" },
-    { "type": "textarea", "id": "collections_text", "label": "Collections text", "default": "Guide visitors by occasion, style, and gifting need instead of making them search through clutter." },
-    { "type": "text", "id": "experience_eyebrow", "label": "Experience eyebrow", "default": "Store experience" },
-    { "type": "text", "id": "experience_heading", "label": "Experience heading", "default": "A helpful salesperson, online" },
-    { "type": "textarea", "id": "experience_text", "label": "Experience text", "default": "Lead customers toward practical actions: browsing categories, checking what suits their occasion, and contacting the store with useful details." },
-    { "type": "text", "id": "feature_one_title", "label": "Feature 1 title", "default": "Occasion-led navigation" },
-    { "type": "textarea", "id": "feature_one_text", "label": "Feature 1 text", "default": "Wedding, daily wear, gifting, and festive collections are clearer than a long product dump." },
-    { "type": "text", "id": "feature_two_title", "label": "Feature 2 title", "default": "Mobile-first contact" },
-    { "type": "textarea", "id": "feature_two_text", "label": "Feature 2 text", "default": "Address, directions, call, and WhatsApp actions stay easy to reach." },
-    { "type": "text", "id": "feature_three_title", "label": "Feature 3 title", "default": "Better trust signals" },
-    { "type": "textarea", "id": "feature_three_text", "label": "Feature 3 text", "default": "Store details and real product photography appear before asking visitors to enquire." },
-    { "type": "text", "id": "enquiry_eyebrow", "label": "Enquiry eyebrow", "default": "Lead generation" },
-    { "type": "text", "id": "enquiry_heading", "label": "Enquiry heading", "default": "Quick enquiry builder" },
-    { "type": "textarea", "id": "enquiry_text", "label": "Enquiry text", "default": "Customers can choose what they are looking for, set a budget, and send a cleaner message to your team." },
-    { "type": "text", "id": "visit_eyebrow", "label": "Visit eyebrow", "default": "Visit the store" },
-    { "type": "text", "id": "visit_heading", "label": "Visit heading", "default": "Aabhushan Sales, Arya Nagar" }
+    { "type": "text", "id": "categories_eyebrow", "label": "Categories eyebrow", "default": "Shop by category" },
+    { "type": "text", "id": "categories_heading", "label": "Categories heading", "default": "Find jewellery by style" },
+    { "type": "textarea", "id": "categories_text", "label": "Categories text", "default": "A Malabar-style catalogue structure adapted for Aabhushan Sales: simple categories, fast browsing, and clear enquiry routes." },
+    { "type": "collection", "id": "featured_collection", "label": "Handpicked collection" },
+    { "type": "range", "id": "featured_limit", "label": "Handpicked products", "min": 4, "max": 12, "step": 4, "default": 8 },
+    { "type": "text", "id": "featured_eyebrow", "label": "Featured eyebrow", "default": "Handpicked for you" },
+    { "type": "text", "id": "featured_heading", "label": "Featured heading", "default": "Fresh styles from the catalogue" },
+    { "type": "textarea", "id": "featured_text", "label": "Featured text", "default": "Show selected products with price, SKU, and badges such as offer, new arrival, bestseller, or fast shipping." },
+    { "type": "text", "id": "promises_eyebrow", "label": "Promises eyebrow", "default": "Aabhushan Promises" },
+    { "type": "text", "id": "promises_heading", "label": "Promises heading", "default": "Reasons to shop with us" },
+    { "type": "textarea", "id": "promises_text", "label": "Promises text", "default": "Trust signals written safely for micro imitation jewellery, without unconfirmed gold or diamond claims." },
+    { "type": "text", "id": "enquiry_eyebrow", "label": "Enquiry eyebrow", "default": "Need help choosing?" },
+    { "type": "text", "id": "enquiry_heading", "label": "Enquiry heading", "default": "Create a quick store enquiry" },
+    { "type": "textarea", "id": "enquiry_text", "label": "Enquiry text", "default": "Choose a category, budget, and occasion so the team can guide you with better options." }
   ],
   "blocks": [
-    { "type": "collection_card", "name": "Collection card", "settings": [
+    { "type": "category_tile", "name": "Category tile", "settings": [
       { "type": "collection", "id": "collection", "label": "Collection" },
       { "type": "image_picker", "id": "image", "label": "Override image" },
-      { "type": "text", "id": "kicker", "label": "Kicker", "default": "Collection" },
-      { "type": "text", "id": "title", "label": "Title" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Category" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Browse selected styles" },
       { "type": "url", "id": "fallback_url", "label": "Fallback URL" },
-      { "type": "text", "id": "link_label", "label": "Link label", "default": "Ask availability" }
+      { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop now" }
+    ] },
+    { "type": "promise", "name": "Promise", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Store Assistance" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "Get help choosing by style, budget, and occasion." }
     ] }
   ],
   "presets": [ { "name": "Aabhushan storefront" } ]

@@ -1,3 +1,7 @@
+{%- liquid
+  assign current_sort = collection.sort_by | default: collection.default_sort_by
+-%}
+
 <section class="as-collection">
   <div class="as-collection-header">
     <p class="as-eyebrow">{{ section.settings.eyebrow }}</p>
@@ -9,6 +13,16 @@
     {%- endif -%}
   </div>
 
+  <div class="as-collection-toolbar">
+    <strong>{{ collection.products_count }} styles</strong>
+    <nav class="as-sort-links" aria-label="Sort products">
+      <a {% if current_sort == 'manual' %}class="is-active"{% endif %} href="{{ collection.url }}?sort_by=manual">Popular</a>
+      <a {% if current_sort == 'price-ascending' %}class="is-active"{% endif %} href="{{ collection.url }}?sort_by=price-ascending">Price: Low to High</a>
+      <a {% if current_sort == 'price-descending' %}class="is-active"{% endif %} href="{{ collection.url }}?sort_by=price-descending">Price: High to Low</a>
+      <a {% if current_sort == 'created-descending' %}class="is-active"{% endif %} href="{{ collection.url }}?sort_by=created-descending">Newest</a>
+    </nav>
+  </div>
+
   {%- paginate collection.products by section.settings.products_per_page -%}
     {%- if collection.products.size > 0 -%}
       <div class="as-product-grid">
@@ -16,6 +30,13 @@
           {% render 'aabhushan-product-card', product: product %}
         {%- endfor -%}
       </div>
+      {%- if paginate.pages > 1 -%}
+        <nav class="as-pagination" aria-label="Collection pagination">
+          {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">Previous</a>{%- endif -%}
+          <span>Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}">Next</a>{%- endif -%}
+        </nav>
+      {%- endif -%}
     {%- else -%}
       <div class="as-heading"><h2>{{ section.settings.empty_heading }}</h2><p>{{ section.settings.empty_text }}</p></div>
     {%- endif -%}
@@ -27,7 +48,7 @@
   "name": "Aabhushan collection",
   "tag": "section",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Collection" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Catalogue" },
     { "type": "textarea", "id": "fallback_text", "label": "Fallback collection text", "default": "Explore micro imitation jewellery, fashion accessories, gifts, and occasion-ready styles from Aabhushan Sales." },
     { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 },
     { "type": "text", "id": "empty_heading", "label": "Empty heading", "default": "This collection is being updated" },

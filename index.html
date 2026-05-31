@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aabhushan Sales – Micro Imitation Jewellery Manufacturer</title>
+  <meta name="description" content="Aabhushan Sales – Premium micro imitation jewellery manufacturer. Exquisite craftsmanship, timeless elegance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-inner">
+      <svg class="loader-gem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,5 95,30 95,70 50,95 5,70 5,30" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+        <polygon points="50,20 80,35 80,65 50,80 20,65 20,35" fill="none" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="50" y1="5" x2="50" y2="20" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="95" y1="30" x2="80" y2="35" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="95" y1="70" x2="80" y2="65" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="50" y1="95" x2="50" y2="80" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="5" y1="70" x2="20" y2="65" stroke="#C9A84C" stroke-width="1"/>
+        <line x1="5" y1="30" x2="20" y2="35" stroke="#C9A84C" stroke-width="1"/>
+      </svg>
+      <div class="loader-text">AABHUSHAN</div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="logo-gem">◆</span>
+      <span class="logo-text">AABHUSHAN</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn-outline">Enquire Now</a>
+    </div>
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">Manufacturer &amp; Exporter</div>
+      <h1 class="hero-title reveal-up">
+        <span class="line">Crafted in</span>
+        <span class="line gold-text">Gold &amp; Grandeur</span>
+      </h1>
+      <p class="hero-subtitle reveal-up">
+        Premium micro imitation jewellery — where artistry meets affordability.<br/>
+        Each piece a masterpiece. Every detail, intentional.
+      </p>
+      <div class="hero-actions reveal-up">
+        <a href="#collections" class="btn-primary">Explore Collections</a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll to Discover</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat reveal-right" data-delay="0">
+        <span class="stat-num" data-target="500">0</span><span class="stat-suffix">+</span>
+        <p>Designs</p>
+      </div>
+      <div class="stat reveal-right" data-delay="100">
+        <span class="stat-num" data-target="25">0</span><span class="stat-suffix">+</span>
+        <p>Years Legacy</p>
+      </div>
+      <div class="stat reveal-right" data-delay="200">
+        <span class="stat-num" data-target="1000">0</span><span class="stat-suffix">+</span>
+        <p>Happy Clients</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Necklaces</span><span class="dot">◆</span>
+      <span>Bangles</span><span class="dot">◆</span>
+      <span>Earrings</span><span class="dot">◆</span>
+      <span>Rings</span><span class="dot">◆</span>
+      <span>Bracelets</span><span class="dot">◆</span>
+      <span>Anklets</span><span class="dot">◆</span>
+      <span>Maang Tikka</span><span class="dot">◆</span>
+      <span>Haath Phool</span><span class="dot">◆</span>
+      <span>Necklaces</span><span class="dot">◆</span>
+      <span>Bangles</span><span class="dot">◆</span>
+      <span>Earrings</span><span class="dot">◆</span>
+      <span>Rings</span><span class="dot">◆</span>
+      <span>Bracelets</span><span class="dot">◆</span>
+      <span>Anklets</span><span class="dot">◆</span>
+      <span>Maang Tikka</span><span class="dot">◆</span>
+      <span>Haath Phool</span><span class="dot">◆</span>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-3d-wrap">
+      <canvas id="aboutCanvas"></canvas>
+    </div>
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-frame reveal-left">
+            <div class="frame-inner">
+              <div class="jewel-icon">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="gemGrad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#FFE082"/>
+                      <stop offset="60%" stop-color="#C9A84C"/>
+                      <stop offset="100%" stop-color="#7B5E1A"/>
+                    </radialGradient>
+                  </defs>
+                  <polygon points="100,10 185,55 185,145 100,190 15,145 15,55" fill="url(#gemGrad)" opacity="0.9"/>
+                  <polygon points="100,35 160,65 160,135 100,165 40,135 40,65" fill="none" stroke="#FFE082" stroke-width="1"/>
+                  <line x1="100" y1="10" x2="100" y2="35" stroke="#FFE082" stroke-width="1.5"/>
+                  <line x1="185" y1="55" x2="160" y2="65" stroke="#FFE082" stroke-width="1.5"/>
+                  <line x1="185" y1="145" x2="160" y2="135" stroke="#FFE082" stroke-width="1.5"/>
+                  <line x1="100" y1="190" x2="100" y2="165" stroke="#FFE082" stroke-width="1.5"/>
+                  <line x1="15" y1="145" x2="40" y2="135" stroke="#FFE082" stroke-width="1.5"/>
+                  <line x1="15" y1="55" x2="40" y2="65" stroke="#FFE082" stroke-width="1.5"/>
+                  <circle cx="100" cy="100" r="8" fill="#FFE082"/>
+                </svg>
+              </div>
+              <div class="frame-badges">
+                <div class="badge-pill">Est. 2000</div>
+                <div class="badge-pill">Surat, India</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="section-tag reveal-up">About Us</div>
+          <h2 class="section-title reveal-up">
+            A Legacy of <span class="gold-text">Exquisite</span><br/>Craftsmanship
+          </h2>
+          <p class="reveal-up">
+            At <strong>Aabhushan Sales</strong>, we have been shaping the world of micro imitation jewellery for over two decades. Based in the jewellery capital of India, Surat, our workshop blends traditional artistry with modern precision engineering.
+          </p>
+          <p class="reveal-up">
+            Every piece we create undergoes rigorous quality checks — from raw material selection to the final polish. We serve retailers, wholesalers, and exporters across India and beyond, delivering jewellery that looks luxurious without compromise.
+          </p>
+          <div class="about-features reveal-up">
+            <div class="feature-item">
+              <div class="feature-icon">✦</div>
+              <div>
+                <h4>Premium Quality</h4>
+                <p>Anti-tarnish, hypoallergenic materials</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">✦</div>
+              <div>
+                <h4>Bulk Manufacturing</h4>
+                <p>Custom orders from 50 to 50,000+ pieces</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">✦</div>
+              <div>
+                <h4>Fast Delivery</h4>
+                <p>Pan-India & international shipping</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <section id="collections">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Our Products</div>
+        <h2 class="section-title reveal-up">Timeless <span class="gold-text">Collections</span></h2>
+        <p class="section-subtitle reveal-up">Discover our wide range of handcrafted micro imitation jewellery</p>
+      </div>
+      <div class="collections-grid">
+
+        <div class="collection-card reveal-up" data-delay="0">
+          <div class="card-3d-wrap">
+            <canvas class="card-canvas" data-shape="ring"></canvas>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">💍</div>
+            <h3>Necklaces &amp; Sets</h3>
+            <p>Bridal sets, casual wear, and statement pieces in gold &amp; silver finish</p>
+            <a href="#contact" class="card-link">View Range →</a>
+          </div>
+        </div>
+
+        <div class="collection-card reveal-up" data-delay="100">
+          <div class="card-3d-wrap">
+            <canvas class="card-canvas" data-shape="gem"></canvas>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">💎</div>
+            <h3>Earrings</h3>
+            <p>Studs, jhumkas, chandeliers, and hoops — over 200 designs available</p>
+            <a href="#contact" class="card-link">View Range →</a>
+          </div>
+        </div>
+
+        <div class="collection-card reveal-up" data-delay="200">
+          <div class="card-3d-wrap">
+            <canvas class="card-canvas" data-shape="bangle"></canvas>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">🔮</div>
+            <h3>Bangles &amp; Bracelets</h3>
+            <p>Traditional &amp; contemporary designs — plain, meenakari, and stone-set</p>
+            <a href="#contact" class="card-link">View Range →</a>
+          </div>
+        </div>
+
+        <div class="collection-card reveal-up" data-delay="300">
+          <div class="card-3d-wrap">
+            <canvas class="card-canvas" data-shape="star"></canvas>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">⭐</div>
+            <h3>Rings</h3>
+            <p>Cocktail rings, bands, and adjustable designs for all occasions</p>
+            <a href="#contact" class="card-link">View Range →</a>
+          </div>
+        </div>
+
+        <div class="collection-card reveal-up" data-delay="400">
+          <div class="card-3d-wrap">
+            <canvas class="card-canvas" data-shape="drop"></canvas>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">✨</div>
+            <h3>Maang Tikka</h3>
+            <p>Bridal headpieces with kundan, polki, and floral inspirations</p>
+            <a href="#contact" class="card-link">View Range →</a>
+          </div>
+        </div>
+
+        <div class="collection-card reveal-up" data-delay="500">
+          <div class="card-3d-wrap">
+            <canvas class="card-canvas" data-shape="crystal"></canvas>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">🌟</div>
+            <h3>Anklets &amp; Haath Phool</h3>
+            <p>Delicate chains, ghungroo anklets, and full hand harness designs</p>
+            <a href="#contact" class="card-link">View Range →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D Showcase -->
+  <section id="showcase">
+    <canvas id="showcaseCanvas"></canvas>
+    <div class="showcase-overlay">
+      <div class="container">
+        <div class="showcase-content">
+          <div class="section-tag reveal-up" style="color:#C9A84C;">Premium Quality</div>
+          <h2 class="section-title reveal-up" style="color:#fff;">
+            Every Detail,<br/><span class="gold-text">Perfectly Crafted</span>
+          </h2>
+          <p class="reveal-up" style="color:rgba(255,255,255,0.75);">
+            Our micro imitation jewellery is manufactured using advanced techniques — anti-tarnish coating, precision stone setting, and premium alloy base metals — ensuring long-lasting beauty at accessible price points.
+          </p>
+          <div class="showcase-stats reveal-up">
+            <div class="show-stat">
+              <div class="show-num">22K</div>
+              <div class="show-label">Gold Finish Available</div>
+            </div>
+            <div class="show-stat">
+              <div class="show-num">6+</div>
+              <div class="show-label">Plating Options</div>
+            </div>
+            <div class="show-stat">
+              <div class="show-num">100%</div>
+              <div class="show-label">Quality Checked</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">How We Work</div>
+        <h2 class="section-title reveal-up">Our <span class="gold-text">Process</span></h2>
+        <p class="section-subtitle reveal-up">From concept to creation — a seamless manufacturing experience</p>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step reveal-up" data-delay="0">
+          <div class="step-num">01</div>
+          <div class="step-icon">🎨</div>
+          <h3>Design &amp; Consultation</h3>
+          <p>Share your vision or choose from our catalogue. Custom designs welcome.</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step reveal-up" data-delay="150">
+          <div class="step-num">02</div>
+          <div class="step-icon">⚙️</div>
+          <h3>Sampling</h3>
+          <p>We create a prototype sample for your approval before bulk production.</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step reveal-up" data-delay="300">
+          <div class="step-num">03</div>
+          <div class="step-icon">🏭</div>
+          <h3>Production</h3>
+          <p>High-precision manufacturing with strict quality control at each stage.</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step reveal-up" data-delay="450">
+          <div class="step-num">04</div>
+          <div class="step-icon">🚚</div>
+          <h3>Delivery</h3>
+          <p>Securely packed and dispatched with real-time tracking support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Why Aabhushan</div>
+        <h2 class="section-title reveal-up">Why <span class="gold-text">Choose Us</span></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal-scale" data-delay="0">
+          <div class="why-num">01</div>
+          <div class="why-icon">🏆</div>
+          <h3>25+ Years of Excellence</h3>
+          <p>Trusted by thousands of retailers and wholesalers across India and abroad.</p>
+        </div>
+        <div class="why-card reveal-scale" data-delay="100">
+          <div class="why-num">02</div>
+          <div class="why-icon">💰</div>
+          <h3>Competitive Pricing</h3>
+          <p>Factory-direct pricing with no middlemen. Get the best value for bulk orders.</p>
+        </div>
+        <div class="why-card reveal-scale" data-delay="200">
+          <div class="why-num">03</div>
+          <div class="why-icon">🎯</div>
+          <h3>Custom Designs</h3>
+          <p>Bring your own design or co-create with our in-house design team.</p>
+        </div>
+        <div class="why-card reveal-scale" data-delay="300">
+          <div class="why-num">04</div>
+          <div class="why-icon">🌍</div>
+          <h3>Pan-India &amp; Export</h3>
+          <p>We ship across India and export to UAE, USA, UK, and Southeast Asia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal-up">Client Love</div>
+        <h2 class="section-title reveal-up">What Our <span class="gold-text">Clients Say</span></h2>
+      </div>
+      <div class="testimonials-slider">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Aabhushan Sales has been our go-to supplier for 8 years. The quality of their micro jewellery is unmatched in this price range. Highly recommended!"</p>
+            <div class="testi-author">
+              <div class="author-avatar">R</div>
+              <div>
+                <strong>Ravi Shah</strong>
+                <span>Jewellery Retailer, Mumbai</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"The bridal sets from Aabhushan are absolutely stunning. Our customers always come back for more. Fast delivery and great packaging too."</p>
+            <div class="testi-author">
+              <div class="author-avatar">P</div>
+              <div>
+                <strong>Priya Mehta</strong>
+                <span>Boutique Owner, Jaipur</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"We import from multiple Indian suppliers, but Aabhushan stands out for consistency, quality, and reliability. Our Dubai customers love their pieces."</p>
+            <div class="testi-author">
+              <div class="author-avatar">A</div>
+              <div>
+                <strong>Ahmed Al-Farsi</strong>
+                <span>Importer, Dubai, UAE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="prevBtn">←</button>
+          <div class="slider-dots" id="sliderDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <button class="slider-btn" id="nextBtn">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="contact-3d">
+      <canvas id="contactCanvas"></canvas>
+    </div>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-tag reveal-up">Get In Touch</div>
+          <h2 class="section-title reveal-up">Let's <span class="gold-text">Connect</span></h2>
+          <p class="reveal-up">Ready to place a bulk order or have custom requirements? Reach out to us and our team will get back to you within 24 hours.</p>
+          <div class="contact-details reveal-up">
+            <div class="contact-item">
+              <div class="ci-icon">📍</div>
+              <div>
+                <strong>Address</strong>
+                <p>Surat, Gujarat, India</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="ci-icon">📞</div>
+              <div>
+                <strong>Phone</strong>
+                <p>+91 XXXXX XXXXX</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="ci-icon">✉️</div>
+              <div>
+                <strong>Email</strong>
+                <p>info@aabhushansales.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="ci-icon">🕐</div>
+              <div>
+                <strong>Business Hours</strong>
+                <p>Mon – Sat: 9:00 AM – 7:00 PM IST</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal-right">
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" placeholder="Your Full Name" required />
+              <label>Full Name</label>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email Address" required />
+              <label>Email</label>
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Your Phone Number" />
+              <label>Phone</label>
+            </div>
+            <div class="form-group">
+              <select>
+                <option value="">Select Product Category</option>
+                <option>Necklaces &amp; Sets</option>
+                <option>Earrings</option>
+                <option>Bangles &amp; Bracelets</option>
+                <option>Rings</option>
+                <option>Maang Tikka</option>
+                <option>Anklets &amp; Haath Phool</option>
+                <option>Custom Order</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Tell us about your requirements..." rows="4"></textarea>
+              <label>Message</label>
+            </div>
+            <button type="submit" class="btn-primary full-width">
+              <span>Send Enquiry</span>
+              <div class="btn-shine"></div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-top">
+      <canvas id="footerCanvas"></canvas>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="logo-gem">◆</span> AABHUSHAN SALES
+            </div>
+            <p>Premium micro imitation jewellery manufacturer based in Surat, India. Serving retailers, wholesalers, and exporters worldwide since 2000.</p>
+            <div class="social-links">
+              <a href="#" class="social-link">f</a>
+              <a href="#" class="social-link">in</a>
+              <a href="#" class="social-link">ig</a>
+              <a href="#" class="social-link">wa</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="#collections">Necklaces &amp; Sets</a></li>
+              <li><a href="#collections">Earrings</a></li>
+              <li><a href="#collections">Bangles &amp; Bracelets</a></li>
+              <li><a href="#collections">Rings</a></li>
+              <li><a href="#collections">Maang Tikka</a></li>
+              <li><a href="#collections">Anklets</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#process">Our Process</a></li>
+              <li><a href="#why">Why Choose Us</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Get the latest designs and offers in your inbox.</p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Enter your email" />
+              <button>→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 Aabhushan Sales. All rights reserved.</p>
+        <p>Designed with ◆ in India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
